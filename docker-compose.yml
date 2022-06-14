@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+    nginx:
+        container_name: ${APP_NAME}.nginx
+        image: nginx:1.20
+        ports:
+            - ${SERVER_PORT}:80
+            - 443:443
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ${APP_SRC}:/var/www
+        links: 
+            - php
+        
+    php:
+        container_name: ${APP_NAME}.php
+        build: ./php
+        volumes: 
+            - ${APP_SRC}:/var/www
+        links: 
+            - mariadb
+           
+    mariadb:
+        container_name: ${APP_NAME}.mariadb
+        image: mariadb:10.6.7
+        restart: always
+        environment: 
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_USER=${DB_USER}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+            - MYSQL_DATABASE=${DB_USER}
+        ports:
+            - ${DB_PORT:-3306}:3306  
+        volumes:
+            - dbdata:/var/lib/mysql
+            - ${APP_SRC}/etc/database:/var/www/database:ro
+volumes: 
+  dbdata:

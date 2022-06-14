@@ -16,6 +16,6 @@
 
 - Build containers:
   
-  ```
-  make build
-  ```
+```
+make build
+```
