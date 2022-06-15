@@ -2,7 +2,7 @@
 .vscode
 .DS_STORE
 
-.env
-!.env.dist
+.env*
+!.env.sample
 mysql/data
 !mysql/data/.gitkeep
