@@ -1,7 +1,7 @@
 # Docker LEMP
 
 - Nginx 1.20
-- PHP 7.4
+- PHP 8.1
 - MariaDB 10.6
 
 ## Setup
@@ -19,3 +19,8 @@
 ```
 make build
 ```
+
+
+## Other versions
+
+[PHP 7.4](https://github.com/rod86/symfonyauctions-docker/tree/php-7.4)
