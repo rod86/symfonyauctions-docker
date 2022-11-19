@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     libpng-dev\
     libfreetype6-dev \
     libpq-dev \
-    libicu-dev g++
+    libicu-dev g++ \
+    librabbitmq-dev
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql zip gd intl
@@ -25,6 +26,10 @@ COPY php.ini /usr/local/etc/php/php.ini
 RUN pecl install xdebug-3.1.4 \
     && docker-php-ext-enable xdebug
 COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini    
+
+# Install amqp
+RUN pecl install amqp \
+    && docker-php-ext-enable amqp
 
 WORKDIR /var/www
 

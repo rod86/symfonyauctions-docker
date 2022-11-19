@@ -5,6 +5,7 @@ SYMFONY=$(PHP) bin/console
 help: ## List all available Makefile commands
 	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z\/_-]+:.*?##/ { printf " \033[36m%-10s\033[90m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%/s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
+
 # DOCKER
 
 .PHONY: build up stop bash
@@ -20,6 +21,7 @@ stop: ## Stop docker container
 bash: ## Go into docker service shell. Usage: make bash s=php
 	@docker-compose exec $(s) bash
 
+
 # PROJECT
 
 .PHONY: install autoload
@@ -29,6 +31,7 @@ install: ## install composer dependencies
 
 autoload: ## Regenerate composer autoload file
 	@$(PHP) composer dump-autoload
+
 
 # DATABASE
 
@@ -46,4 +49,14 @@ database/migrate: ## Run migrations
 
 database/seed: ## Seed database 
 	@$(SYMFONY) doctrine:fixtures:load --no-interaction
-	
+
+
+# RABBITMQ
+
+.PHONY: queues/clear queues/listen
+
+queues/clear: ## Deletes all queues
+	@docker-compose exec rabbitmq bash -c "rabbitmqctl list_queues name -qs | xargs -L1 rabbitmqctl delete_queue"
+
+queues/listen: ## Start listening to queues
+	@$(SYMFONY) messenger:consume async -v

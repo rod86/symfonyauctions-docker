@@ -35,5 +35,16 @@ services:
         volumes:
             - dbdata:/var/lib/mysql
             - ${APP_SRC}/etc/database:/var/www/database:ro
+
+    rabbitmq:
+        container_name: ${APP_NAME}.rabbitmq
+        image: rabbitmq:3.11-management
+        environment:
+            - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+            - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+        ports:
+            - ${RABBITMQ_PORT:-5672}:5672
+            - ${RABBITMQ_ADMINPORT:-15672}:15672
+
 volumes: 
   dbdata:

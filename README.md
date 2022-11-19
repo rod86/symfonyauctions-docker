@@ -20,6 +20,15 @@
 make build
 ```
 
+## Debug
+
+### Debug async queues
+
+Inside php container run
+
+```
+XDEBUG_TRIGGER=PHPSTORM PHP_IDE_CONFIG="serverName=api.symfonyauctions.local" php bin/console messenger:consume async -v
+```
 
 ## Other versions
 
