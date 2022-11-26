@@ -3,10 +3,12 @@
 - Nginx 1.20
 - PHP 8.1
 - MariaDB 10.6
+- RabbitMQ
+- Mailcatcher
 
 ## Setup
 
-- Create and configure an *.env* file from *.env.dist*
+- Create and configure an *.env* file from *.env.sample*
 
 - Add the below line to the hosts file
 
@@ -19,6 +21,17 @@
 ```
 make build
 ```
+
+## Services
+
+|   	        |   	                                |
+|---	        |---	                                |
+| API 	        | http://api.symfonyauctions.local  	|  
+| RabbitMQ  	| http://api.symfonyauctions.local:15672  |
+| Mailcatcher   | http://api.symfonyauctions.local:1080   | 
+
+Credentials are defined in ``.env`` file in this repository
+
 
 ## Debug
 
