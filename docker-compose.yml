@@ -20,6 +20,8 @@ services:
             - ${APP_SRC}:/var/www
         links: 
             - mariadb
+            - rabbitmq
+            - mailhog
            
     mariadb:
         container_name: ${APP_NAME}.mariadb
