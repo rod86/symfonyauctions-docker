@@ -46,11 +46,11 @@ services:
             - ${RABBITMQ_PORT:-5672}:5672
             - ${RABBITMQ_ADMINPORT:-15672}:15672
 
-    mailcatcher:
-        container_name: ${APP_NAME}.mailcatcher
-        image: schickling/mailcatcher
+    mailhog:
+        container_name: ${APP_NAME}.mailhog
+        image: mailhog/mailhog
         ports:
-            - ${MAIL_WEB_PORT:-1080}:1080
+            - ${MAIL_WEB_PORT:-8025}:8025
             - ${MAIL_SMTP_PORT:-1025}:1025
 
 volumes: 
