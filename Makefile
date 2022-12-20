@@ -60,3 +60,11 @@ queues/clear: ## Deletes all queues
 
 queues/listen: ## Start listening to queues
 	@$(SYMFONY) messenger:consume async -v
+
+
+# TEST
+
+.PHONY: test
+
+test: ## Execute unit tests
+	@$(PHP) ./vendor/bin/pest --parallel --coverage --coverage-html var/coverage tests/Unit
