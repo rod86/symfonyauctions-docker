@@ -67,4 +67,4 @@ queues/listen: ## Start listening to queues
 .PHONY: test
 
 test: ## Execute unit tests
-	@$(PHP) ./vendor/bin/pest --parallel --coverage --coverage-html var/coverage tests/Unit
+	@$(PHP) ./vendor/bin/pest --parallel --coverage --coverage-html coverage tests/Unit
