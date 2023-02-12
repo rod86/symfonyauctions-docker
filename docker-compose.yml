@@ -12,6 +12,10 @@ services:
             - ${APP_SRC}:/var/www
         links: 
             - php
+        networks:
+           local:
+               aliases:
+                   - ${API_HOST}
         
     php:
         container_name: ${APP_NAME}.php
@@ -22,6 +26,8 @@ services:
             - mariadb
             - rabbitmq
             - mailhog
+        networks:
+            - local
            
     mariadb:
         container_name: ${APP_NAME}.mariadb
@@ -37,6 +43,8 @@ services:
         volumes:
             - dbdata:/var/lib/mysql
             - ${APP_SRC}/etc/database:/var/www/database:ro
+        networks:
+            - local
 
     rabbitmq:
         container_name: ${APP_NAME}.rabbitmq
@@ -47,6 +55,8 @@ services:
         ports:
             - ${RABBITMQ_PORT:-5672}:5672
             - ${RABBITMQ_ADMINPORT:-15672}:15672
+        networks:
+            - local
 
     mailhog:
         container_name: ${APP_NAME}.mailhog
@@ -54,6 +64,11 @@ services:
         ports:
             - ${MAIL_WEB_PORT:-8025}:8025
             - ${MAIL_SMTP_PORT:-1025}:1025
+        networks:
+            - local
 
 volumes: 
     dbdata:
+
+networks:
+    local:
