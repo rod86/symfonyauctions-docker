@@ -8,18 +8,48 @@
 
 ## Setup
 
-- Create and configure an *.env* file from *.env.sample*
+- Create and configure an *.env* file from *.env.sample*.
 
-- Add the below line to the hosts file
-
+- Add the hostname to the hosts file.
 ```
 127.0.0.1  api.symfonyauctions.local
 ```
 
-- Build containers:
-  
+- Build containers. 
 ```
 make build
+```
+
+- Start containers.
+```
+make up
+```
+
+- Install dependencies.
+```
+make install
+```
+
+- Setup database (create database, run migrations and load fixtures).
+```
+make database
+```
+
+## Start
+
+- Start docker containers
+```
+make up
+```
+
+- Clear queues messages (if any).
+```
+make queues/clear
+```
+
+- Start queues
+```
+make queues/listen
 ```
 
 ## Services
@@ -42,6 +72,25 @@ Inside php container run
 ```
 XDEBUG_TRIGGER=PHPSTORM PHP_IDE_CONFIG="serverName=api.symfonyauctions.local" php bin/console messenger:consume async -v
 ```
+
+## Testing
+
+### Unit tests
+
+Run unit tests with code coverage.
+```
+make test/unit
+```
+To see code coverage, open *coverage/index.html* 
+
+### Feature tests
+
+Run feature tests.
+```
+make test/feature
+```
+
+**NOTE** Some tests may fail due to fixtures are not reset. To rerun the features tests, you may need to reinstall fixtures.
 
 ## Other versions
 
