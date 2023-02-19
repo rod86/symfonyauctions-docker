@@ -10,6 +10,7 @@
 
 - [Services](#services)
 - [Start](#start)
+- [Download repositories](#download-repositories)
 - [Setup](#setup)
 - [Debug](#debug)
 - [Testing](#testing)
@@ -46,9 +47,19 @@ make queues/listen
 - execute api requests on *http://api.symfonyauctions.local*
 
 
+## Download repositories
+
+- Clone this repo.
+
+- Clone https://github.com/rod86/symfonyauctions-api
+
+- In docker repo, create an *.env* from *.env*.
+
+- Update the env parameter **APP_SRC** with a relative or absolute path to the api code. 
+
 ## Setup
 
-- Create and configure an *.env* file from *.env.sample* in api.
+- In api repository, create and configure the *.env* file from *.env.sample* in api.
 
 - Add the hostname to the hosts file.
 ```
