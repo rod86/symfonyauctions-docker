@@ -28,6 +28,8 @@ services:
             - mailhog
         networks:
             - local
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
            
     mariadb:
         container_name: ${APP_NAME}.mariadb

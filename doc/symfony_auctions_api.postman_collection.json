@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "6f279eba-4051-4f65-ac6e-0a56b79eb5f4",
+		"name": "Symfony Auctions API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12618749"
+	},
+	"item": [
+		{
+			"name": "auctions",
+			"item": [
+				{
+					"name": "Get auctions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.symfonyauctions.local/auctions",
+							"protocol": "http",
+							"host": [
+								"api",
+								"symfonyauctions",
+								"local"
+							],
+							"path": [
+								"auctions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get auction by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.symfonyauctions.local/auctions/322fd44b-685c-4894-87c4-805b990b0344",
+							"protocol": "http",
+							"host": [
+								"api",
+								"symfonyauctions",
+								"local"
+							],
+							"path": [
+								"auctions",
+								"322fd44b-685c-4894-87c4-805b990b0344"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create auction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"hello world RSUB\",\n    \"description\": \"Lorem ipsum dolor et sit amet\",\n    \"initial_amount\": 55.50,\n    \"status\": \"draft\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.symfonyauctions.local/auctions",
+							"protocol": "http",
+							"host": [
+								"api",
+								"symfonyauctions",
+								"local"
+							],
+							"path": [
+								"auctions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"auction_id\": \"538f7f07-7caa-4e34-813e-bf2e43a35c6f\",\n    \"amount\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.symfonyauctions.local/bid",
+							"protocol": "http",
+							"host": [
+								"api",
+								"symfonyauctions",
+								"local"
+							],
+							"path": [
+								"bid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update auction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"hello world updated\",\n    \"description\": \"Lorem ipsum dolor et sit amet 2\",\n    \"initial_amount\": 55.50,\n    \"status\": \"enabled\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.symfonyauctions.local/auctions/91e7e85c-27df-4a7d-a9c3-eadd2d66c674",
+							"protocol": "http",
+							"host": [
+								"api",
+								"symfonyauctions",
+								"local"
+							],
+							"path": [
+								"auctions",
+								"91e7e85c-27df-4a7d-a9c3-eadd2d66c674"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Close auction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bid_id\": \"fe40cf62-71b6-477b-ab5b-44ed9138377c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.symfonyauctions.local/auctions/8103267f-898a-443c-bb40-ccb6cf39fd55/close",
+							"protocol": "http",
+							"host": [
+								"api",
+								"symfonyauctions",
+								"local"
+							],
+							"path": [
+								"auctions",
+								"8103267f-898a-443c-bb40-ccb6cf39fd55",
+								"close"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"rey_subastaAs\",\n    \"email\": \"rey_subastas@example.comS\",\n    \"password\": \"123456\",\n    \"password_confirm\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.symfonyauctions.local/users",
+							"protocol": "http",
+							"host": [
+								"api",
+								"symfonyauctions",
+								"local"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "rey_subastas",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"rey_subastas\",\n    \"email\": \"rey_subastas@example.com\",\n    \"password\": \"123456\",\n    \"password_confirm\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://api.symfonyauctions.local/users",
+									"protocol": "http",
+									"host": [
+										"api",
+										"symfonyauctions",
+										"local"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "rbuswell",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"rbuswell\",\n    \"email\": \"rbuswell@example.com\",\n    \"password\": \"123456\",\n    \"password_confirm\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://api.symfonyauctions.local/users",
+									"protocol": "http",
+									"host": [
+										"api",
+										"symfonyauctions",
+										"local"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "john_doe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"john_doe\",\n    \"email\": \"jdoe@example.com\",\n    \"password\": \"123456\",\n    \"password_confirm\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://api.symfonyauctions.local/users",
+									"protocol": "http",
+									"host": [
+										"api",
+										"symfonyauctions",
+										"local"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"john_doe\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.symfonyauctions.local/auth",
+							"protocol": "http",
+							"host": [
+								"api",
+								"symfonyauctions",
+								"local"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
