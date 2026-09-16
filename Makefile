@@ -69,5 +69,5 @@ queues/listen: ## Start listening to queues
 test/unit: ## Execute unit tests
 	@$(PHP) ./vendor/bin/pest --parallel --coverage --coverage-html coverage tests/Unit
 
-test/feature: ## Execute unit tests
+test/feature: ## Execute feature tests
 	@$(PHP) ./vendor/bin/pest tests/Feature
